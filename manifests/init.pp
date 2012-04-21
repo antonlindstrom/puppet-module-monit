@@ -1,4 +1,11 @@
-class monit($ensure=present, $admin='', $interval=60) {
+class monit(
+    $ensure=present,
+    $admin='',
+    $interval=60,
+    $mailserver='localhost',
+    $httpd=false
+  ) {
+
   $is_present = $ensure == 'present'
 
   $service_pattern = $ensure ? {
@@ -15,6 +22,7 @@ class monit($ensure=present, $admin='', $interval=60) {
     content => template('monit/monitrc.erb'),
     mode    => '0600',
     require => Package['monit'],
+    notify  => Service['monit'],
   }
 
   file { '/etc/default/monit':
