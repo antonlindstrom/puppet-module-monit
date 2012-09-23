@@ -3,7 +3,7 @@ check process <%= name %> with pidfile <%= pidfile %>
   stop program  = "/etc/init.d/<%= name %> stop"
 <% if ip_port.to_i > 0 -%>
   if failed port <%= ip_port %> then restart
-<% elsif socket.any? -%>
+<% elsif socket -%>
   if failed unixsocket <%= socket %> then restart
 <% end -%>
 <% checks.each do |check| -%>
