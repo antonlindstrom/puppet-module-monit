@@ -1,7 +1,7 @@
 define monit::monitor($pidfile,
                       $ensure=present,
                       $ip_port=0,
-                      $socket=undef,
+                      $socket='',
                       $checks=[]) {
 
   file { "/etc/monit/conf.d/$name.conf":

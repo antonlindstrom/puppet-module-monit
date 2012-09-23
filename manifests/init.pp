@@ -1,6 +1,6 @@
 class monit(
     $ensure=present,
-    $admin=undef,
+    $admin='',
     $interval=60,
     $mailserver='localhost',
     $httpd=false
